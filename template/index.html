@@ -1,0 +1,35 @@
+{%extends 'main.html'%}
+{%block content%}
+<div class="container">
+
+		<div class="row">
+			<h1 align="center">拍拍贷调查问卷</h1>
+
+<p>填写说明：<br/>
+1、 本调查问卷是复旦大学经济学院与ACCA [特许公认会计师公会] 联合互联网金融研究课题使用，目的是为了更好地了解P2P互联网金融服务特点而设计，问卷调查结果及其分析成果主要用于科研团队的学术研究，并协助拍拍贷改善服务质量，与政府、银行、工商、税务等部门均无关。研究过程和结果不会出现任何个体身份信息。调研的结果形成学术论文的同时，将给国家的金融决策提供建议，以期更好的为互联网金融政策制定提供参考。<br/>
+2、 问卷调查所涉及的问题没有对错之分，您只需要按照实际情况填写，您答案的真实性和完整性对完成本课题的质量具有重要影响。请您尽力提供仔细实际的答案，并自由提供您的细节或建议.<br/>
+3、 我们对本次调研所得的信息严格守密，不会向任何第三方提供您和您企业的任何身份或信息。本问卷不署名，您的回答会受到完全保密。<br/>
+4、 您所回答的信息对其他用户在进行贷款时会起到一定的参考作用，我们将对您的个人信息进行保密，如果您觉得某些问题对您个人有所影响可以选择不与回答
+</p>
+		</div>
+		
+		<div class="row">
+			<form action='/' method='post' class='form-inline navbar-form navbar-left'>
+		{%for ques in questions%}
+			<div class='form-group,row'>
+				<h4 style="color:red">{{ques[0]}}</h4>
+				{%for line in ques[1].split('\n')%}
+				<p>{{ line}} </p>
+				{%end%}
+			<input type='text' name='answer' class='form-control' />
+			</div>
+			
+		{%end%}
+			<div class="eow">
+			<button type='submit' class='btn btn-success'>提交</button>
+			</div>
+			</form>
+		</div>
+</div>
+
+{%end%}
