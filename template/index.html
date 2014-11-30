@@ -14,18 +14,67 @@
 		</div>
 		
 		<div class="row">
-			<form action='/' method='post' class='form-inline navbar-form navbar-left'>
+			<form action='/postAnswers' method='post' class='form-inline navbar-form navbar-left'>
+			<div class="container">
+			<div class='form-group'>
+				<h4 style="color:red">请输入您的拍拍贷账户名</h4>
+			<input type='text' name='name' class='form-control' />
+			</div>
+			<div class='form-group'>
+				<h4 style="color:red">请输入您的手机号</h4>
+			<input type='text' name='cellphone' class='form-control' />
+			</div>
+			</div>
+<script>
+function toggle(targetid){
+    if (document.getElementById){
+        target=document.getElementById(targetid);
+            if (target.style.display=="block"){
+                target.style.display="none";
+            } else {
+                target.style.display="block";
+            }
+    }
+}
+</script>
 		{%for ques in questions%}
-			<div class='form-group,row'>
+			{%if ques[1] == 0%}
+			<h3><a onclick="toggle(1)">一、基本信息</a></h3>
+				<div class="container" id="1" style="display:none">
+			{%elif ques[1] == 17%}
+				</div>
+				<h3><a onclick="toggle(2)">二、借款人问卷分A、B卷，A卷为个人借款问卷、B卷为企业借款问卷</a></h3>
+				<div class="container" id="2" style="display:none">
+			{%elif ques[1] == 18%}
+				</div>
+				<h4><a onclick="toggle(3)">A卷：个人借款问卷</a></h4>
+				<div class="container" id="3"style="display:none">
+			{%elif ques[1] == 31%}
+				</div>
+				<h4><a onclick="toggle(4)">B卷：企业借款问卷</a></h4>
+				<div class="container" id="4"style="display:none">
+			{%elif ques[1] == 56%}
+				</div>
+				<h3><a onclick="toggle(5)">三、贷款人问卷</a></h3>
+				<div class="container" id="5"style="display:none">
+			{%elif ques[1] == 68%}
+				</div>
+				<h3><a onclick="toggle(6)">四、既是借款人又是贷款人的问卷</a></h3>
+				<div class="container" id="6"style="display:none">
+			{%end%}
+			<div class='form-group,row' width="40%">
 				<h4 style="color:red">{{ques[0]}}</h4>
-				{%for line in ques[1].split('\n')%}
+				{%for line in ques[2].split('\n')%}
 				<p>{{ line}} </p>
 				{%end%}
-			<input type='text' name='answer' class='form-control' />
+			<input type='text' name='answer{{ques[1]}}' class='form-control' />
 			</div>
+			{%if ques[1] == 93%}
+				</div>
+			{%end%}
 			
 		{%end%}
-			<div class="eow">
+			<div class="row">
 			<button type='submit' class='btn btn-success'>提交</button>
 			</div>
 			</form>

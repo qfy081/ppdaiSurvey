@@ -9,6 +9,7 @@ class indexHandler(tornado.web.RequestHandler):
     def __init__(self, *args, **kwargs):
 	tornado.web.RequestHandler.__init__( self, *args, **kwargs )
 	qs = []
+	count = 0
 	try:
 	    fi = open('survey.txt')
 	    selec = ''
@@ -22,7 +23,8 @@ class indexHandler(tornado.web.RequestHandler):
 		    if line.strip('\r\n') == '' and preLine.strip('\r\n').strip() != '':
 			if q.strip('\r\n') == '':
 			    continue
-			qs.append((q,selec))
+			qs.append((q,count,selec))
+			count += 1
 			preLine = line	
 			continue
 		    else:
@@ -33,6 +35,8 @@ class indexHandler(tornado.web.RequestHandler):
 	
 	for q in qs:
 	    print q[0]
+	
+	print len(qs)
 	self.qs = qs
  
 		 
@@ -44,13 +48,18 @@ class indexHandler(tornado.web.RequestHandler):
          
 
 
+class postAnswers(tornado.web.RequestHandler):
 
+    def get(self):  
+	pass
 
+    def post(self):  
+	self.get_argument('')
 
 handlers=[
 		(r'/',indexHandler),
 	#	(r'/getQuestions',getQuestions),
-	#	(r'/postAnswers',postAnswers),
+		(r'/postAnswers',postAnswers),
 		]
 settings={
 		'static_path':os.path.join(os.path.dirname(__file__),'static'),
