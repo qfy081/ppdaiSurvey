@@ -11,6 +11,9 @@
 3、 我们对本次调研所得的信息严格守密，不会向任何第三方提供您和您企业的任何身份或信息。本问卷不署名，您的回答会受到完全保密。<br/>
 4、 您所回答的信息对其他用户在进行贷款时会起到一定的参考作用，我们将对您的个人信息进行保密，如果您觉得某些问题对您个人有所影响可以选择不与回答
 </p>
+<h4 style="color:red">1）只是利用拍拍贷做投资的用户请回答第一和第三部分</br>
+ 2）只是利用拍拍贷做借款的用户请回答第一和第二部分（个人借款请回答A卷，企业贷款请回答B卷）</br>
+                                          3）即借款又贷款的企业用户请回答第一，第二，和第四部分</h4>
 		</div>
 		
 		<div class="row">
@@ -39,11 +42,11 @@ function toggle(targetid){
 </script>
 		{%for ques in questions%}
 			{%if ques[1] == 0%}
-			<h3><a onclick="toggle(1)">一、基本信息</a></h3>
+			<h3><a onclick="toggle(1)">一、基本信息（这部分为必选题，请您务必回答）</a></h3>
 				<div class="container" id="1" style="display:none">
 			{%elif ques[1] == 17%}
 				</div>
-				<h3><a onclick="toggle(2)">二、借款人问卷分A、B卷，A卷为个人借款问卷、B卷为企业借款问卷</a></h3>
+				<h3><a onclick="toggle(2)">二、借款人问卷分A、B卷，A卷为个人借款问卷、B卷为企业借款问卷（个人借款请只回答A卷，企业借款人请只回答B卷)</a></h3>
 				<div class="container" id="2" style="display:none">
 			{%elif ques[1] == 18%}
 				</div>
@@ -53,13 +56,13 @@ function toggle(targetid){
 				</div>
 				<h4><a onclick="toggle(4)">B卷：企业借款问卷</a></h4>
 				<div class="container" id="4"style="display:none">
-			{%elif ques[1] == 56%}
+			{%elif ques[1] == 57%}
 				</div>
-				<h3><a onclick="toggle(5)">三、贷款人问卷</a></h3>
+				<h3><a onclick="toggle(5)">三、贷款人问卷（如果只做投资，不借贷请回答C卷）</a></h3>
 				<div class="container" id="5"style="display:none">
-			{%elif ques[1] == 68%}
+			{%elif ques[1] == 69%}
 				</div>
-				<h3><a onclick="toggle(6)">四、既是借款人又是贷款人的问卷</a></h3>
+				<h3><a onclick="toggle(6)">四、既是借款人又是贷款人的（企业主）问卷</a></h3>
 				<div class="container" id="6"style="display:none">
 			{%end%}
 			<div class='form-group,row' width="40%">
@@ -69,7 +72,7 @@ function toggle(targetid){
 				{%end%}
 			<input type='text' name='answer{{ques[1]}}' class='form-control' />
 			</div>
-			{%if ques[1] == 93%}
+			{%if ques[1] == 94%}
 				</div>
 			{%end%}
 			
